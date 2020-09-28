@@ -8,7 +8,7 @@ class SerialPort < IO::FileDescriptor
 
     fd = LibC.open(path.check_no_null_byte, oflag)
     if fd < 0
-      raise Errno.new("Error opening serial port '#{path}'")
+      raise IO::Error.new("Error opening serial port '#{path}'")
     end
 
     self.sync = true # no buffering
